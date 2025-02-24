@@ -18,5 +18,16 @@ namespace Mission08_Team0409.Controllers
         {
             return View();
         }
+        
+        public IActionResult TaskForm()
+        {
+            return View();
+        }
+        
+        public IActionResult QuadrantView()
+        {
+            return View();
+        }
+        
     }
 }

@@ -1,0 +1,55 @@
+@*
+*@
+@{
+    ViewData["Title"] = "Task Form";
+}
+
+@model Mission08_Team0409.Models.Task
+
+<h1 class="text-center mb-4">Task Form</h1>
+
+<form method="post" class="container p-4 border rounded shadow-sm bg-light">
+    <input type="hidden" asp-for="TaskId"/>
+
+    <div class="mb-3">
+        <label asp-for="TaskToDo" class="form-label">Task Name:</label>
+        <input asp-for="TaskToDo" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Date" class="form-label">Select a Due Date:</label>
+        <input asp-for="Date" type="date" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Quadrant" class="form-label">Quadrant:</label>
+        <select asp-for="Quadrant" class="form-select">
+            <option value="">--Choose a quadrant--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label">Category:</label>
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">-- Select a category --</option>
+            <option value="home">Home</option>
+            <option value="school">School</option>
+            <option value="work">Work</option>
+            <option value="church">Church</option>
+        </select>
+    </div>
+
+    <div class="form-check mb-3">
+        <label asp-for="Completed" class="form-check-label">Completed?</label>
+        <input asp-for="Completed" type="checkbox" class="form-check-input"/>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary">Submit Task</button>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </div>
+</form>
