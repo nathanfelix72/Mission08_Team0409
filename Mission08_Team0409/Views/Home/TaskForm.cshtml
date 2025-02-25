@@ -25,10 +25,10 @@
         <label asp-for="Quadrant" class="form-label">Quadrant:</label>
         <select asp-for="Quadrant" class="form-select">
             <option value="">--Choose a quadrant--</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option value="1">1: Important / Urgent</option>
+            <option value="2">2: Important / Not Urgent</option>
+            <option value="3">3: Not Important / Urgent</option>
+            <option value="4">4: Not Important / Not Urgent</option>
         </select>
     </div>
 
@@ -42,12 +42,7 @@
             <option value="4">Church</option>
         </select>
     </div>
-
-    <div class="form-check mb-3">
-        <label asp-for="Completed" class="form-check-label">Completed?</label>
-        <input asp-for="Completed" type="checkbox" class="form-check-input"/>
-    </div>
-
+    
     <div class="d-flex justify-content-between">
         <button type="submit" class="btn btn-primary">Submit Task</button>
         <div asp-validation-summary="All" class="text-danger"></div>
