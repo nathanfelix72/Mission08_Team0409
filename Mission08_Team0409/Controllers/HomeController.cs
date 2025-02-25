@@ -48,5 +48,24 @@ namespace Mission08_Team0409.Controllers
                 return View(task);
             }
         }
+
+        [HttpGet]
+        public IActionResult MarkComplete(int id)
+        {
+            var task = _repo.Tasks.FirstOrDefault(t => t.TaskId == id);
+            return View(task);
+        }
+
+        [HttpPost]
+        public IActionResult MarkComplete(TaskItem task)
+        {
+            if (task != null)
+            {
+                task.Completed = true; // Mark as completed
+                _repo.UpdateTask(task);
+                _repo.SaveChanges();
+            }
+            return RedirectToAction("Index"); // Return to task list
+        }
     }
 }

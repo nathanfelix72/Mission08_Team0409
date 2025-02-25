@@ -8,5 +8,7 @@
         public void SaveChanges();
 
         public void AddTask(TaskItem task);
+
+        public void UpdateTask(TaskItem task);
     }
 }

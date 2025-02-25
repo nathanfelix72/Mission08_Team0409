@@ -18,6 +18,11 @@
             _context.SaveChanges();
         }
 
+        public void UpdateTask(TaskItem task)
+        {
+            _context.Tasks.Update(task); // Explicitly tell EF Core to track the change
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();
