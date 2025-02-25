@@ -9,10 +9,10 @@
             _context = context;
         }
 
-        public List<Task> Tasks => _context.Tasks.ToList();
+        public List<TaskItem> Tasks => _context.Tasks.ToList();
         public List<Category> Categories => _context.Categories.ToList();
         
-        public void AddTask(Task task)
+        public void AddTask(TaskItem task)
         {
             _context.Tasks.Add(task);
             _context.SaveChanges();

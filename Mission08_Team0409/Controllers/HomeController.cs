@@ -1,19 +1,16 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0409.Models;
-using Task = Mission08_Team0409.Models.Task;
+using TaskItem = Mission08_Team0409.Models.TaskItem;
 
 namespace Mission08_Team0409.Controllers
 {
     public class HomeController : Controller
-    {
-        private TaskContext _context;
-        
+    {        
         private ITaskRepository _repo;
         
-        public HomeController(TaskContext context, ITaskRepository temp)
+        public HomeController(ITaskRepository temp)
         {
-            _context = context; // Initialize _context 
             _repo = temp;
         }
 
@@ -29,20 +26,20 @@ namespace Mission08_Team0409.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddTask()
+        public IActionResult TaskForm()
         {
             //get list of categories from the db
             ViewBag.Categories = _repo.Categories.Select(c=>c.CategoryName).ToList();
             
-            return View(new Task());
+            return View(new TaskItem());
         }
 
         [HttpPost]
-        public IActionResult AddTask(Task task)
+        public IActionResult TaskForm(TaskItem task)
         {
             if (ModelState.IsValid)
             {
-                _repo.Tasks.Add(task); //add it to db
+                _repo.AddTask(task); //add it to db
                 _repo.SaveChanges();
                 return RedirectToAction("Index"); //go back to index
             }
