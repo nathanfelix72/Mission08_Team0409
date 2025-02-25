@@ -48,6 +48,22 @@ namespace Mission08_Team0409.Controllers
                 return View(task);
             }
         }
+        
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _repo.Tasks
+                .Single(x => x.TaskId == id); // Go out and look for one record
+            return View(recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(TaskItem deletedInfo)
+        {
+            _repo.Tasks.Remove(deletedInfo);
+            _repo.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
 hey
