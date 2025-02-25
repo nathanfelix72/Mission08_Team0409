@@ -3,6 +3,9 @@
     public interface ITaskRepository
     {
         List<Task> Tasks { get; }
+        List<Category> Categories { get; }
+        
+        public void SaveChanges();
 
         public void AddTask(Task task);
     }
