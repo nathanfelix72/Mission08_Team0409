@@ -11,8 +11,7 @@ namespace Mission08_Team0409.Models
         [Required(ErrorMessage = "You need to enter the task")]
         public string TaskToDo { get; set; }
         public DateTime? Date { get; set; }
-        [Required]
-        [Range(1, 4, ErrorMessage = "Quadrant needs to be between 1-4")]
+        [Required(ErrorMessage = "You need to enter a quadrant")]
         public int Quadrant { get; set; }
         [ForeignKey("CategoryId")]
         public int? CategoryId { get; set; }
