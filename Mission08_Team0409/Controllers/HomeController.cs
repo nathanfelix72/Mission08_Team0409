@@ -17,11 +17,21 @@ namespace Mission08_Team0409.Controllers
             _repo = temp;
         }
 
+        public IActionResult Completed()
+        {
+            var tasks = _repo.Tasks
+                .Where(t => t.Completed) //get the completed tasks
+                .OrderBy(t => t.Date) //order by the due date
+                .ToList();
+
+            return View(tasks);
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
             var tasks = _repo.Tasks
-                .Where(t => ! t.Completed)//get the uncompleted tasks
+                .Where(t => ! t.Completed) //get the uncompleted tasks
                 .OrderBy(t => t.Date) //order by the due date
                 .ToList();
             
@@ -61,12 +71,19 @@ namespace Mission08_Team0409.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(TaskItem deletedInfo)
+        public IActionResult Delete(TaskItem deletedInfo, string returnUrl)
         {
             _repo.DeleteTask(deletedInfo);
             _repo.SaveChanges();
+
+            if (returnUrl == "Completed")
+            {
+                return RedirectToAction("Completed");
+            }
+
             return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public IActionResult MarkComplete(int id)
