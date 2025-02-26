@@ -15,7 +15,7 @@
                 @foreach (var item in Model.Where(t => t.Quadrant == 1 && !t.Completed))
                 {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>@item.TaskToDo</span>
+                        <span>@item.TaskToDo - Due @(item.Date.HasValue ? item.Date.Value.ToString("MMM dd") : "")</span>
                         <div>
                             <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
@@ -42,7 +42,7 @@
                 @foreach (var item in Model.Where(t => t.Quadrant == 2 && !t.Completed))
                 {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>@item.TaskToDo</span>
+                        <span>@item.TaskToDo - Due @(item.Date.HasValue ? item.Date.Value.ToString("MMM dd") : "")</span>
                         <div>
                             <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
@@ -70,7 +70,7 @@
                 @foreach (var item in Model.Where(t => t.Quadrant == 3 && !t.Completed))
                 {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>@item.TaskToDo</span>
+                        <span>@item.TaskToDo - Due @(item.Date.HasValue ? item.Date.Value.ToString("MMM dd") : "")</span>
                         <div>
                             <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
@@ -96,7 +96,7 @@
                 @foreach (var item in Model.Where(t => t.Quadrant == 4 && !t.Completed))
                 {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>@item.TaskToDo</span>
+                        <span>@item.TaskToDo - Due @(item.Date.HasValue ? item.Date.Value.ToString("MMM dd") : "")</span>
                         <div>
                             <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
