@@ -10,5 +10,9 @@
         public void AddTask(TaskItem task);
 
         public void UpdateTask(TaskItem task);
+
+        public void DeleteTask(TaskItem task);
+
+        public void Edit(TaskItem task);
     }
 }

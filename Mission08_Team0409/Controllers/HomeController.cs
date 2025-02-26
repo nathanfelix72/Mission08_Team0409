@@ -1,6 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Mission08_Team0409.Migrations;
 using Mission08_Team0409.Models;
+using static System.Net.Mime.MediaTypeNames;
 using TaskItem = Mission08_Team0409.Models.TaskItem;
 
 namespace Mission08_Team0409.Controllers
@@ -60,10 +63,52 @@ namespace Mission08_Team0409.Controllers
         [HttpPost]
         public IActionResult Delete(TaskItem deletedInfo)
         {
-            _repo.Tasks.Remove(deletedInfo);
+            _repo.DeleteTask(deletedInfo);
             _repo.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult MarkComplete(int id)
+        {
+            var recordToEdit = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            ViewBag.Category = _repo.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+            return View(recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult MarkComplete(TaskItem task)
+        {
+            task.Completed = true; // Mark as completed
+            _repo.UpdateTask(task);
+            return RedirectToAction("Index"); // Return to task list
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            ViewBag.Category = _repo.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+            return View("TaskForm", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(TaskItem updatedInfo)
+        {
+            _repo.Edit(updatedInfo);
+            _repo.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
 }
-hey

@@ -17,7 +17,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>@item.TaskToDo</span>
                         <div>
-                            <form method="post" asp-controller="Home" asp-action="MarkComplete" style="display:inline;">
+                            <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
                                 <button type="submit" class="btn btn-sm btn-outline-success me-2">
                                     <i class="bi bi-check2-square"></i> Complete
@@ -44,7 +44,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>@item.TaskToDo</span>
                         <div>
-                            <form method="post" asp-controller="Home" asp-action="MarkComplete" style="display:inline;">
+                            <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
                                 <button type="submit" class="btn btn-sm btn-outline-success me-2">
                                     <i class="bi bi-check2-square"></i> Complete
@@ -72,7 +72,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>@item.TaskToDo</span>
                         <div>
-                            <form method="post" asp-controller="Home" asp-action="MarkComplete" style="display:inline;">
+                            <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
                                 <button type="submit" class="btn btn-sm btn-outline-success me-2">
                                     <i class="bi bi-check2-square"></i> Complete
@@ -98,7 +98,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>@item.TaskToDo</span>
                         <div>
-                            <form method="post" asp-controller="Home" asp-action="MarkComplete" style="display:inline;">
+                            <form method="post" asp-controller="Home" asp-action="MarkComplete" asp-route-id="@item.TaskId" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.TaskId" />
                                 <button type="submit" class="btn btn-sm btn-outline-success me-2">
                                     <i class="bi bi-check2-square"></i> Complete
