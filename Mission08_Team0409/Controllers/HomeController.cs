@@ -68,25 +68,14 @@ namespace Mission08_Team0409.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult MarkComplete(int id)
         {
-            var recordToEdit = _repo.Tasks
-                .Single(x => x.TaskId == id);
-
-            ViewBag.Category = _repo.Categories
-                .OrderBy(x => x.CategoryName)
-                .ToList();
-
-            return View(recordToEdit);
-        }
-
-        [HttpPost]
-        public IActionResult MarkComplete(TaskItem task)
-        {
-            task.Completed = true; // Mark as completed
+            var task = _repo.Tasks.Single(x => x.TaskId == id);
+            task.Completed = true;
             _repo.UpdateTask(task);
-            return RedirectToAction("Index"); // Return to task list
+            _repo.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
